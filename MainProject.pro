@@ -3,7 +3,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS +=  HelloWorld \
-            HelloWorldTr
+            HelloWorldTr \
+            DialogMode
 
 CONFIG += ordered
 
