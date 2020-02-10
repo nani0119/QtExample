@@ -5,7 +5,8 @@ TEMPLATE = subdirs
 SUBDIRS +=  HelloWorld \
             HelloWorldTr \
             DialogMode \
-            Label
+            Label \
+            LcdNumber
 
 CONFIG += ordered
 
