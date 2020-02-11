@@ -1,0 +1,19 @@
+QPushButton {
+        /* 水平居左、垂直居中 */
+        text-align: center center;
+        padding-left: 3px;
+        min-width: 3px;
+        max-width: 200px;
+        width:163px;
+}
+
+QPushButton:hover {
+        background-color:gray;
+}
+
+QPushButton::menu-indicator {
+        subcontrol-position: right center;
+        subcontrol-origin: padding;
+        padding-right: 3px;
+        /* image: none; */
+} 

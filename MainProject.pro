@@ -6,7 +6,8 @@ SUBDIRS +=  HelloWorld \
             HelloWorldTr \
             DialogMode \
             Label \
-            LcdNumber
+            LcdNumber \
+            PushButton
 
 CONFIG += ordered
 
