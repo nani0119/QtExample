@@ -18,16 +18,24 @@ MainWindow::MainWindow(QWidget *parent)
 
     QAction *pSubAction1 = new QAction;
     QAction *pSubAction2 = new QAction;
+    QAction *pSubAction3 = new QAction;
 
     pSubAction1->setText("SubAction1");
     pSubAction2->setText("SubAction2");
+    pSubAction3->setText("SubAction3");
+    pSubAction1->setCheckable(true);
+    pSubAction2->setCheckable(true);
+    pSubAction3->setCheckable(true);
 
     pActionGroup->addAction(pSubAction1);
     pActionGroup->addAction(pSubAction2);
+    pActionGroup->addAction(pSubAction3);
+
 
     QMenu *pSubMenu = new QMenu();
     pSubMenu->addAction(pSubAction1);
     pSubMenu->addAction(pSubAction2);
+    pSubMenu->addAction(pSubAction3);
     pSubMenu->setTitle("子菜单");
 
     connect(pActionGroup, SIGNAL(triggered(QAction *)), this, SLOT(onSubAction(QAction *)));
