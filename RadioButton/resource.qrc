@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/main.qss</file>
+        <file>img/switchOff.png</file>
+        <file>img/switchOffHover.png</file>
+        <file>img/switchOn.png</file>
+        <file>img/switchOnHovePressed.png</file>
+        <file>img/switchOnHover.png</file>
+        <file>img/switchOnPressed.png</file>
+    </qresource>
+</RCC>

@@ -9,6 +9,7 @@ SUBDIRS +=  HelloWorld \
             Label \
             LcdNumber \
             PushButton \
+            RadioButton \
             ToolButton
 
 CONFIG += ordered
