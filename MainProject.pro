@@ -3,6 +3,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS +=  HelloWorld \
+            CheckBox \
             HelloWorldTr \
             DialogMode \
             Label \
