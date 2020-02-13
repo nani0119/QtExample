@@ -8,6 +8,7 @@ SUBDIRS +=  HelloWorld \
             DialogMode \
             Label \
             LcdNumber \
+            LineEdit \
             PushButton \
             RadioButton \
             ToolButton
