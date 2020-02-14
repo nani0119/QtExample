@@ -9,6 +9,7 @@ SUBDIRS +=  HelloWorld \
             Label \
             LcdNumber \
             LineEdit \
+            ProgressBar \
             PushButton \
             RadioButton \
             Slider \
