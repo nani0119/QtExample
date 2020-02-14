@@ -11,6 +11,7 @@ SUBDIRS +=  HelloWorld \
             LineEdit \
             PushButton \
             RadioButton \
+            Slider \
             SpinBox \
             ToolButton
 
