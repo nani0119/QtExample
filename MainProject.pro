@@ -4,6 +4,7 @@ TEMPLATE = subdirs
 
 SUBDIRS +=  HelloWorld \
             CheckBox \
+            DateTimeEdit \
             HelloWorldTr \
             DialogMode \
             Label \
