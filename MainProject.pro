@@ -13,6 +13,7 @@ SUBDIRS +=  HelloWorld \
             ProgressBar \
             PushButton \
             RadioButton \
+            ScrollArea \
             Slider \
             SpinBox \
             ToolButton
