@@ -16,6 +16,7 @@ SUBDIRS +=  HelloWorld \
             ScrollArea \
             Slider \
             SpinBox \
+            ToolBox \
             ToolButton
 
 CONFIG += ordered
