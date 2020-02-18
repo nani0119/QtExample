@@ -4,6 +4,7 @@ TEMPLATE = subdirs
 
 SUBDIRS +=  HelloWorld \
             CheckBox \
+            CommandLinkButton \
             DateTimeEdit \
             HelloWorldTr \
             DialogMode \
