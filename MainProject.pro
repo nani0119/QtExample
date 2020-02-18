@@ -15,6 +15,7 @@ SUBDIRS +=  HelloWorld \
             RadioButton \
             ScrollArea \
             Slider \
+            SpacerItem \
             SpinBox \
             SplashScreen \
             SystemTrayIcon \
