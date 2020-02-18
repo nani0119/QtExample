@@ -7,6 +7,7 @@ SUBDIRS +=  HelloWorld \
             ComboBox \
             CommandLinkButton \
             DateTimeEdit \
+            FontComboBox \
             HelloWorldTr \
             DialogMode \
             Label \
