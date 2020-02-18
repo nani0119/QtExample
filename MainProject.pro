@@ -11,6 +11,7 @@ SUBDIRS +=  HelloWorld \
             FontComboBox \
             HelloWorldTr \
             DialogMode \
+            KeySequenceEdit \
             Label \
             LcdNumber \
             LineEdit \
