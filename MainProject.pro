@@ -6,6 +6,7 @@ SUBDIRS +=  HelloWorld \
             CheckBox \
             ComboBox \
             CommandLinkButton \
+            Dial \
             DateTimeEdit \
             FontComboBox \
             HelloWorldTr \
