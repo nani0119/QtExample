@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/lead.svg</file>
+        <file>img/search_idle.svg</file>
+    </qresource>
+</RCC>

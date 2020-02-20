@@ -17,6 +17,7 @@ SUBDIRS +=  HelloWorld \
             LcdNumber \
             LineEdit \
             Meta-Object \
+            ObjectTree \
             ProgressBar \
             PushButton \
             RadioButton \
