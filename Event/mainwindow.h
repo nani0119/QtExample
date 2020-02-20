@@ -5,26 +5,7 @@
 #include <QApplication>
 #include <QLabel>
 
-class ObjectFilter: public QObject
-{
-    Q_OBJECT
-public:
-    ObjectFilter(QObject *parent = nullptr);
-    ~ObjectFilter();
-protected:
-    bool eventFilter(QObject *obj, QEvent *event) override;
-};
 
-class MyApplication : public QApplication
-{
-    Q_OBJECT
-public:
-    MyApplication(int& argc, char**argv);
-    ~MyApplication();
-protected:
-    bool notify(QObject *, QEvent *) override;
-    bool event(QEvent *) override;
-};
 
 
 class MyLabel: public QLabel
@@ -35,6 +16,7 @@ public:
     ~MyLabel();
 protected:
     bool event(QEvent *e) override;
+    bool eventFilter(QObject *obj, QEvent *event) override;
     //void mousePressEvent(QMouseEvent *event);
 };
 
@@ -52,5 +34,18 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
 private:
     MyLabel *pMyLabel;
+};
+
+
+class MyApplication : public QApplication
+{
+    Q_OBJECT
+public:
+    MyApplication(int& argc, char**argv);
+    ~MyApplication();
+protected:
+    bool notify(QObject *, QEvent *) override;
+    bool event(QEvent *) override;
+    bool eventFilter(QObject *obj, QEvent *event) override;
 };
 #endif // MAINWINDOW_H

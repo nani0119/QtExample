@@ -9,10 +9,12 @@ MyMainWindow::MyMainWindow(QWidget *parent)
 {
     QVBoxLayout *layout = new QVBoxLayout;
     pMyLabel->setObjectName("pLabel");
-    pMyLabel->installEventFilter(this);
+    pMyLabel->installEventFilter(pMyLabel);
     pMyLabel->setText("click me");
     layout->addWidget(pMyLabel);
 
+    this->setObjectName("myWindow");
+    this->installEventFilter(this);
 
     QWidget* widget = new QWidget(this);
     widget->setLayout(layout);
@@ -43,25 +45,6 @@ bool MyMainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj,event);
 }
 
-
-ObjectFilter::ObjectFilter(QObject *parent)
-    : QObject(parent)
-{
-
-}
-
-ObjectFilter::~ObjectFilter()
-{
-
-}
-
-bool ObjectFilter::eventFilter(QObject *obj, QEvent *event)
-{
-    qDebug() <<"ObjectFilter:"<<__func__<<":"<<obj->objectName();
-    //return true;
-    return QObject::eventFilter(obj,event);
-}
-
 MyApplication::MyApplication(int &argc, char **argv)
     :QApplication(argc, argv)
 {
@@ -87,6 +70,13 @@ bool MyApplication::event(QEvent * e)
     return QApplication::event(e);
 }
 
+bool MyApplication::eventFilter(QObject *obj, QEvent *event)
+{
+    qDebug() <<"MyApplication:"<<__func__<<":"<<obj->objectName();
+    //return true;
+    return QApplication::eventFilter(obj,event);
+}
+
 MyLabel::MyLabel(QWidget *parent)
     :QLabel(parent)
 {
@@ -102,6 +92,13 @@ bool MyLabel::event(QEvent *e)
 {
      qDebug() <<"MyLabel:"<<__func__;
      return QLabel::event(e);
+}
+
+bool MyLabel::eventFilter(QObject *obj, QEvent *event)
+{
+    qDebug() <<"MyLabel:"<<__func__<<":"<<obj->objectName();
+    //return true;
+    return QLabel::eventFilter(obj,event);
 }
 
 //void MyLabel::mousePressEvent(QMouseEvent *event)

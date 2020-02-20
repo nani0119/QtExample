@@ -8,10 +8,7 @@ int main(int argc, char *argv[])
 {
     MyApplication a(argc, argv);
     a.setObjectName("MyApplication");
-    ObjectFilter* mainWindowEventFilter = new ObjectFilter;
     MyMainWindow myWindow;
-    myWindow.setObjectName("myWindow");
-    myWindow.installEventFilter(mainWindowEventFilter);
     myWindow.show();
     return a.exec();
 }
