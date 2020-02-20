@@ -8,6 +8,7 @@ SUBDIRS +=  HelloWorld \
             CommandLinkButton \
             Dial \
             DateTimeEdit \
+            Event \
             FontComboBox \
             HelloWorldTr \
             DialogMode \
