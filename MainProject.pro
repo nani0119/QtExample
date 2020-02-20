@@ -19,6 +19,7 @@ SUBDIRS +=  HelloWorld \
             Meta-Object \
             ObjectTree \
             ProgressBar \
+            Property \
             PushButton \
             RadioButton \
             ScrollArea \
