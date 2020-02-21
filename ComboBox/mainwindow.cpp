@@ -157,6 +157,6 @@ QValidator::State MyValidator::validate(QString &input, int &pos) const
          state =  QValidator::Intermediate;
     }
 
-    qDebug()<<__func__<<":" << state;
+    qDebug()<<__func__<<":" << state << " pos: " <<pos;
     return state;
 }

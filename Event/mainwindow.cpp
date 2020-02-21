@@ -35,6 +35,7 @@ bool MyMainWindow::event(QEvent *event)
 
 void MyMainWindow::mousePressEvent(QMouseEvent *event)
 {
+    Q_UNUSED(event);
     qDebug() <<"<=======MainWindow:"<<__func__;
 }
 

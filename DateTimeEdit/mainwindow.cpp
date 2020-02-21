@@ -60,7 +60,7 @@ void MainWindow::onDateTimeChanged(const QDateTime &dateTime)
     QDateTimeEdit::Section section = pCurrentDateTime->currentSection();
     auto func = [](QDateTimeEdit::Section section)->QString {
                                                                 QString str;
-                                                                switch(section)
+                                                                switch(section&(QDateTimeEdit::DateSections_Mask|QDateTimeEdit::TimeSections_Mask))
                                                                 {
                                                                     case QDateTimeEdit::NoSection:
                                                                         str = "NoSection";
