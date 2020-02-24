@@ -33,6 +33,7 @@ SUBDIRS +=  HelloWorld \
             StackedLayout \
             StackedWidget \
             SystemTrayIcon \
+            TabWidget \
             ToolBox \
             ToolButton
 
