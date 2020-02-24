@@ -3,6 +3,7 @@
 #include <QPushButton>
 #include <QSpacerItem>
 #include <QStyle>
+#include <QResizeEvent>
 #include <QDebug>
 
 
@@ -42,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
     pPushButton9->setText("button9");
 
     CustomLayout *layout = new CustomLayout();
+    layout->setObjectName("CustomLayout");
     layout->addWidget(pPushButton1);
     layout->addItem(pSpacerItem);
     layout->addWidget(pPushButton3);
@@ -61,6 +63,26 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    qDebug()<<__func__<<": size " << event->size();
+    QWidget *widget = centralWidget();
+    QLayout* customLayout = widget->layout();
+    int height = 0;
+    if(customLayout!=nullptr)
+    {
+        qDebug()<<__func__<<": layout " << customLayout->objectName();
+        int count = customLayout->count();
+        for(int i = 0; i < count; i++)
+        {
+            QLayoutItem* item = customLayout->itemAt(i);
+            height +=item->sizeHint().height();
+        }
+    }
+    qDebug()<<__func__<<": height " << height;
+    resize(event->size().width(), height);
 }
 
 

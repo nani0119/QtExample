@@ -29,6 +29,7 @@ SUBDIRS +=  HelloWorld \
             SpinBox \
             SplashScreen \
             SplitterLayout \
+            StackedLayout \
             SystemTrayIcon \
             ToolBox \
             ToolButton

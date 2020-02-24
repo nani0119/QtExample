@@ -35,5 +35,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+protected:
+    virtual void resizeEvent(QResizeEvent* event);
 };
 #endif // MAINWINDOW_H
