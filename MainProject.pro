@@ -11,6 +11,7 @@ SUBDIRS +=  HelloWorld \
             DateTimeEdit \
             Event \
             FontComboBox \
+            FormLayout \
             HelloWorldTr \
             DialogMode \
             KeySequenceEdit \
@@ -30,6 +31,7 @@ SUBDIRS +=  HelloWorld \
             SplashScreen \
             SplitterLayout \
             StackedLayout \
+            StackedWidget \
             SystemTrayIcon \
             ToolBox \
             ToolButton
