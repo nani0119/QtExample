@@ -35,7 +35,8 @@ SUBDIRS +=  HelloWorld \
             SystemTrayIcon \
             TabWidget \
             ToolBox \
-            ToolButton
+            ToolButton \
+            Tr
 
 CONFIG += ordered
 
