@@ -10,6 +10,7 @@ SUBDIRS +=  HelloWorld \
             Dial \
             DateTimeEdit \
             Event \
+            FeedbackDialog \
             FontComboBox \
             FormLayout \
             HelloWorldTr \
