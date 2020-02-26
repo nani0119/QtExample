@@ -12,6 +12,7 @@ SUBDIRS +=  HelloWorld \
             DateTimeEdit \
             Event \
             FeedbackDialog \
+            FileDialog \
             FontComboBox \
             FontDialog \
             FormLayout \
