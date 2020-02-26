@@ -4,6 +4,7 @@ TEMPLATE = subdirs
 
 SUBDIRS +=  HelloWorld \
             CheckBox \
+            ColorDialog \
             ComboBox \
             CommandLinkButton \
             CustomLayout \
