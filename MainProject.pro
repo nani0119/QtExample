@@ -13,6 +13,7 @@ SUBDIRS +=  HelloWorld \
             Event \
             FeedbackDialog \
             FontComboBox \
+            FontDialog \
             FormLayout \
             HelloWorldTr \
             DialogMode \

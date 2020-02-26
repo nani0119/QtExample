@@ -19,8 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    widget.cpp
+    dialog.cpp
 
 HEADERS += \
-    widget.h
-
+    dialog.h
