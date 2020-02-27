@@ -40,7 +40,8 @@ SUBDIRS +=  HelloWorld \
             TabWidget \
             ToolBox \
             ToolButton \
-            Tr
+            Tr \
+            WizardDialog
 
 CONFIG += ordered
 
