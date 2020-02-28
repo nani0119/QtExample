@@ -24,6 +24,7 @@ SUBDIRS +=  HelloWorld \
             LineEdit \
             Meta-Object \
             ObjectTree \
+            PrinterDialog \
             ProgressBar \
             Property \
             PushButton \
