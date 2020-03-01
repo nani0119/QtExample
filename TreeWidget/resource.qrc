@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/plus.jpg</file>
+        <file>img/minus.jpg</file>
+        <file>qss/main.qss</file>
+    </qresource>
+</RCC>

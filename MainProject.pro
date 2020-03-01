@@ -43,6 +43,7 @@ SUBDIRS +=  HelloWorld \
             ToolBox \
             ToolButton \
             Tr \
+            TreeWidget \
             WizardDialog
 
 CONFIG += ordered
