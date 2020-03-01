@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/UnityTweakTool.png</file>
+        <file>img/UnityColor.png</file>
+        <file>img/SogouPinyin.png</file>
+        <file>img/Smplayer.png</file>
+        <file>img/Remmina.png</file>
+        <file>img/PdfReader.png</file>
+        <file>img/Octave.png</file>
+        <file>img/Im6.png</file>
+        <file>img/GCB.png</file>
+    </qresource>
+</RCC>

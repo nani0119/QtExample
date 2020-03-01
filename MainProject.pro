@@ -22,6 +22,7 @@ SUBDIRS +=  HelloWorld \
             Label \
             LcdNumber \
             LineEdit \
+            ListWidget \
             Meta-Object \
             ObjectTree \
             PrinterDialog \
