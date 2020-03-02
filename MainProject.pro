@@ -40,6 +40,7 @@ SUBDIRS +=  HelloWorld \
             StackedWidget \
             SystemTrayIcon \
             TabWidget \
+            TableWidget \
             ToolBox \
             ToolButton \
             Tr \
