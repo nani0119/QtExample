@@ -22,6 +22,7 @@ SUBDIRS +=  HelloWorld \
             Label \
             LcdNumber \
             LineEdit \
+            ListView \
             ListWidget \
             Meta-Object \
             ObjectTree \
