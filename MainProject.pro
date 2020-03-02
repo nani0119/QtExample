@@ -45,6 +45,7 @@ SUBDIRS +=  HelloWorld \
             ToolBox \
             ToolButton \
             Tr \
+            TreeView \
             TreeWidget \
             WizardDialog
 
