@@ -23,4 +23,3 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h
-
