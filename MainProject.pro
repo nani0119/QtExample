@@ -8,6 +8,7 @@ SUBDIRS +=  HelloWorld \
             ComboBox \
             CommandLinkButton \
             CustomLayout \
+            DesktopServices \
             Dial \
             DateTimeEdit \
             Event \
