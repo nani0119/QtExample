@@ -13,6 +13,7 @@ SUBDIRS +=  HelloWorld \
             Event \
             FeedbackDialog \
             FileDialog \
+            FileSystemWatcher \
             FontComboBox \
             FontDialog \
             FormLayout \
