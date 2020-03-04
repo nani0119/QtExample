@@ -7,6 +7,7 @@ SUBDIRS +=  HelloWorld \
             ColorDialog \
             ComboBox \
             CommandLinkButton \
+            CryptographicHash \
             CustomLayout \
             DesktopServices \
             Dial \
