@@ -22,7 +22,7 @@ SUBDIRS +=  HelloWorld \
             FormLayout \
             HelloWorldTr \
             DialogMode \
-			InstallMessageHandler \
+            InstallMessageHandler \
             KeySequenceEdit \
             Label \
             LcdNumber \
