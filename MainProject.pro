@@ -14,6 +14,7 @@ SUBDIRS +=  HelloWorld \
             Event \
             FeedbackDialog \
             FileDialog \
+            FileIconProvider \
             FileSystemWatcher \
             FontComboBox \
             FontDialog \
