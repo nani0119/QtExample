@@ -45,6 +45,7 @@ SUBDIRS +=  HelloWorld \
             SystemTrayIcon \
             TabWidget \
             TableWidget \
+            TemporaryFile \
             Timer \
             ToolBox \
             ToolButton \
