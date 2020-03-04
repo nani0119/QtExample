@@ -37,6 +37,7 @@ SUBDIRS +=  HelloWorld \
             PushButton \
             RadioButton \
             ScrollArea \
+			SetMessagePattern \
             Slider \
             SpacerItem \
             SpinBox \
