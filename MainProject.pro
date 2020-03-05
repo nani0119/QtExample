@@ -22,6 +22,7 @@ SUBDIRS +=  HelloWorld \
             FormLayout \
             HelloWorldTr \
             DialogMode \
+    ImageReader \
             InstallMessageHandler \
             KeySequenceEdit \
             Label \
