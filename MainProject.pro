@@ -32,6 +32,7 @@ SUBDIRS +=  HelloWorld \
             ListWidget \
             Meta-Object \
             ObjectTree \
+    Painter \
             PrinterDialog \
             ProgressBar \
             Property \
