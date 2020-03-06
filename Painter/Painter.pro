@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     PainterCoorOperation \
-    PainterDrawText
+    PainterDrawText \
+    PainterViewPortAndWindow

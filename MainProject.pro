@@ -22,7 +22,7 @@ SUBDIRS +=  HelloWorld \
             FormLayout \
             HelloWorldTr \
             DialogMode \
-    ImageReader \
+            ImageReader \
             InstallMessageHandler \
             KeySequenceEdit \
             Label \
@@ -32,7 +32,7 @@ SUBDIRS +=  HelloWorld \
             ListWidget \
             Meta-Object \
             ObjectTree \
-    Painter \
+            Painter \
             PrinterDialog \
             ProgressBar \
             Property \
@@ -59,5 +59,8 @@ SUBDIRS +=  HelloWorld \
             TreeWidget \
             WizardDialog
 
-CONFIG += ordered
+CONFIG += ordered \
+    qt
+
+QT += widgets
 
