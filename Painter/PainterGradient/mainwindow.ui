@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>473</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="layout">
+      <item row="0" column="0" colspan="2">
+       <widget class="MyWidget" name="widget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>4</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="gradientTypeGroupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title">
+         <string>渐变类型</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="gradientTypeLayoutLayout">
+           <item>
+            <widget class="QRadioButton" name="linearGradientButton">
+             <property name="text">
+              <string>LinearGradient</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radialGradientButton">
+             <property name="text">
+              <string>RadialGradient</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="conicalGradientButton">
+             <property name="text">
+              <string>ConicalGradient</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QGroupBox" name="gradientSpreadGroupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title">
+         <string>渐变模式</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="gradientSpreadLayout">
+           <item>
+            <widget class="QRadioButton" name="padSpreadButton">
+             <property name="text">
+              <string>PadSpread</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="repeatSpreadButton">
+             <property name="text">
+              <string>RepeatSpread</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="reflectSpreadButton">
+             <property name="text">
+              <string>ReflectSpread</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyWidget</class>
+   <extends>QWidget</extends>
+   <header>mywidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>gradientUpdate()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>linearGradientButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>gradientUpdate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>109</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radialGradientButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>gradientUpdate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>505</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>175</x>
+     <y>388</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>conicalGradientButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>gradientUpdate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>248</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>padSpreadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>gradientUpdate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>474</x>
+     <y>462</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>478</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>repeatSpreadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>gradientUpdate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>524</x>
+     <y>510</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>372</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>reflectSpreadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>gradientUpdate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>622</x>
+     <y>542</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>385</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
