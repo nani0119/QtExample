@@ -5,4 +5,5 @@ SUBDIRS += \
     PainterDraw \
     PainterDrawText \
     PainterGradient \
+    PainterOvenTimer \
     PainterViewPortAndWindow
