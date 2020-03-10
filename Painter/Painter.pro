@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    PainterComposition \
     PainterCoorOperation \
     PainterDraw \
     PainterDrawText \
