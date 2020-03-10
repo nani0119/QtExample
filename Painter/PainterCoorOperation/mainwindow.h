@@ -28,6 +28,10 @@ public:
     qreal getSy();
     void setSx(qreal);
     void setSy(qreal);
+    qreal getSh();
+    qreal getSv();
+    void setSh(qreal);
+    void setSv(qreal);
 protected:
     void paintEvent(QPaintEvent *event);
 private:
@@ -38,6 +42,8 @@ private:
     int zRotate;
     qreal sx;
     qreal sy;
+    qreal sh;
+    qreal sv;
 };
 class MainWindow : public QMainWindow
 {
@@ -54,6 +60,8 @@ private slots:
     void onWidgetZAxisRotateUpdate(int val);
     void onWidgeXscaleUpdate(double);
     void onWidgeYscaleUpdate(double);
+    void onWidgeHShearUpdate(double);
+    void onWidgeVShearUpdate(double);
 private:
     Widget* myWidget;
     QSpinBox *xSpinBox;
@@ -70,6 +78,7 @@ private:
 
     QDoubleSpinBox *scaleX;
     QDoubleSpinBox *scaleY;
-
+    QDoubleSpinBox *shearH;
+    QDoubleSpinBox *shearV;
 };
 #endif // MAINWINDOW_H

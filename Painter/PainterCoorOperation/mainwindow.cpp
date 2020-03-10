@@ -19,6 +19,8 @@ Widget::Widget(QWidget* parent) :QWidget(parent)
     zRotate = 0;
     sx = 1.0;
     sy = 1.0;
+    sh = 0.0;
+    sv = 0.0;
 }
 
 Widget::~Widget()
@@ -42,6 +44,7 @@ void Widget::paintEvent(QPaintEvent *event)
     transform.rotate(getZRotate(),Qt::ZAxis);
 
     transform.scale(getSx(), getSy());
+    transform.shear(getSh(), getSv());
 
 
     painter.setTransform(transform);
@@ -116,7 +119,24 @@ void Widget::setSy(qreal val)
     sy = val;
 }
 
+void  Widget::setSh(qreal val)
+{
+    sh = val;
+}
 
+qreal Widget::getSh()
+{
+    return  sh;
+}
+
+void Widget::setSv(qreal val)
+{
+    sv = val;
+}
+qreal Widget::getSv()
+{
+    return sv;
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),myWidget(new Widget),
@@ -125,7 +145,8 @@ MainWindow::MainWindow(QWidget *parent)
       xRotateSpinBox(new QSpinBox),XAxisRotate(new QSlider),
       yRotateSpinBox(new QSpinBox),YAxisRotate(new QSlider),
       zRotateSpinBox(new QSpinBox),ZAxisRotate(new QSlider),
-      scaleX(new QDoubleSpinBox),scaleY(new QDoubleSpinBox)
+      scaleX(new QDoubleSpinBox),scaleY(new QDoubleSpinBox),
+      shearH(new QDoubleSpinBox),shearV(new QDoubleSpinBox)
 {
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(myWidget,0,0,1,4);
@@ -224,6 +245,21 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(yScaleLabel,6,2);
     layout->addWidget(scaleY,6,3);
 
+    QLabel *hShearLabel = new QLabel("水平扭曲:");
+    shearH->setRange(0.0, 100.0);
+    shearH->setSingleStep(0.1);
+    shearH->setValue(0.0);
+    connect(shearH, SIGNAL(valueChanged(double)),this, SLOT(onWidgeHShearUpdate(double)));
+    layout->addWidget(hShearLabel,7,0);
+    layout->addWidget(shearH,7,1);
+
+    QLabel *vShearLabel = new QLabel("垂直扭曲:");
+    shearV->setRange(0.0, 100.0);
+    shearV->setSingleStep(0.1);
+    shearV->setValue(0.0);
+    connect(shearV, SIGNAL(valueChanged(double)),this, SLOT(onWidgeVShearUpdate(double)));
+    layout->addWidget(vShearLabel,7,2);
+    layout->addWidget(shearV,7,3);
 
     QWidget *widget = new QWidget(this);
     widget->setLayout(layout);
@@ -273,5 +309,17 @@ void MainWindow::onWidgeXscaleUpdate(double val)
 void MainWindow::onWidgeYscaleUpdate(double val)
 {
     myWidget->setSy(val);
+    myWidget->update();
+}
+
+void MainWindow::onWidgeHShearUpdate(double val)
+{
+    myWidget->setSh(val);
+    myWidget->update();
+}
+
+void MainWindow::onWidgeVShearUpdate(double val)
+{
+    myWidget->setSv(val);
     myWidget->update();
 }
