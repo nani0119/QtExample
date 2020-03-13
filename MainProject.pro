@@ -37,6 +37,7 @@ SUBDIRS +=  HelloWorld \
             ProgressBar \
             Property \
             PushButton \
+    QSS \
             RadioButton \
             ScrollArea \
 			SetMessagePattern \
