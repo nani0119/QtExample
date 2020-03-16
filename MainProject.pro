@@ -38,6 +38,7 @@ SUBDIRS +=  HelloWorld \
             Property \
             PushButton \
     QSS \
+    QtCharts \
             RadioButton \
             ScrollArea \
 			SetMessagePattern \
