@@ -3,10 +3,11 @@
 #include <QDir>
 #include <QComboBox>
 #include <QVariant>
-#include <QGridLayout>
+#include <QVBoxLayout>
 #include <QPluginLoader>
+#include <QPainter>
 
-Widget::Widget(QWidget *parent) : QWidget(parent), chart(nullptr),myWidget(nullptr)
+Widget::Widget(QWidget *parent) : QWidget(parent), chart(nullptr),myWidget(nullptr),layout(new QVBoxLayout)
 {
 
 }
@@ -32,7 +33,12 @@ void Widget::loadPlugin(const QString& text)
          chart = qobject_cast<IChartInterface *>(plugin);
          if(chart)
          {
-            qDebug()<< "echo:" << chart->echo("hello");
+            if(myWidget != nullptr)
+            {
+                layout->removeWidget(myWidget);
+                delete  myWidget;
+            }
+            chart->echo("hello");
             QObject* obj = chart->getInstance();
             myWidget = qobject_cast<QWidget*>(obj);
             if(myWidget == nullptr)
@@ -40,7 +46,6 @@ void Widget::loadPlugin(const QString& text)
                 qDebug()<<__func__<<"  error: get widget fail";
                 return;
             }
-            QGridLayout* layout = new QGridLayout;
             layout->addWidget(myWidget);
             setLayout(layout);
          }

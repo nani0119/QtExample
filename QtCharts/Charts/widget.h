@@ -3,6 +3,7 @@
 #include "chartinterface.h"
 #include <QWidget>
 
+class QVBoxLayout;
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -13,7 +14,7 @@ public slots:
 private:
      IChartInterface* chart;
      QWidget* myWidget;
-
+     QVBoxLayout* layout;
 };
 
 #endif // WIDGET_H

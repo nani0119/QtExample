@@ -1,4 +1,4 @@
-#include(../../../build.pri)
+include(../../../build.pri)
 
 TEMPLATE        = lib
 CONFIG         += plugin

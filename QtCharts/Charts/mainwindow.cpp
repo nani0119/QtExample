@@ -31,7 +31,7 @@ void MainWindow::getAllPlugin(Ui::MainWindow *ui)
     pluginsDir.cdUp();
     //切换到插件目录
     pluginsDir.cd("plugins");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files,QDir::Unsorted))
     {
 
         QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
