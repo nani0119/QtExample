@@ -1,6 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 #include "chartinterface.h"
+#include "chartstooltip.h"
 #include <QWidget>
 
 class BarChart : public QWidget,IChartInterface
@@ -20,5 +21,7 @@ private slots:
     void onBarSeriesClicked(int index,QBarSet* set);
 private:
     QChart* chart;
+    ChartToolTip *tooltip;
+
 };
 #endif // WIDGET_H

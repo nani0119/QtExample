@@ -5,7 +5,7 @@
 #include <QtCharts>
 
 BarChart::BarChart(QWidget *parent)
-    : QWidget(parent), chart(new QtCharts::QChart)
+    : QWidget(parent), chart(new QChart),tooltip(nullptr)
 {
 
         QBarSet *set0 = new QBarSet("Jane");
@@ -52,6 +52,7 @@ BarChart::BarChart(QWidget *parent)
 
 BarChart::~BarChart()
 {
+
 }
 
 QString BarChart::echo(const QString &message)
@@ -78,5 +79,14 @@ QChart *BarChart::getChart()
 void BarChart::onBarSeriesClicked(int index, QBarSet *set)
 {
     qDebug()<<__func__<<" index: "<< index << "  value: "<<set->at(index);
+    QPoint point = cursor().pos();
+    if(tooltip == nullptr)
+    {
+       tooltip = new ChartToolTip(chart);
+    }
+    tooltip->setAnchor(QPointF(0,0));
+    tooltip->setText(QString("X: %1 \nY: %2 ").arg(index).arg(set->at(index)));
+    tooltip->setZValue(11);
+    tooltip->updateGeometry();
+    tooltip->show();
 }
-
