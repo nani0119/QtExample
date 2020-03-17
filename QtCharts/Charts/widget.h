@@ -11,10 +11,12 @@ public:
     explicit Widget(QWidget *parent = nullptr);
 public slots:
     void loadPlugin(const QString& text);
+    void onChartThemeChanged(int index);
 private:
-     IChartInterface* chart;
+     IChartInterface* chartInterface;
      QWidget* myWidget;
      QVBoxLayout* layout;
+     enum QChart::ChartTheme  theme;
 };
 
 #endif // WIDGET_H

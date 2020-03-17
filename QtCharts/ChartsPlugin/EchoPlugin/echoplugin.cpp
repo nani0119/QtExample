@@ -33,3 +33,7 @@ QObject *EchoPlugin::getInstance()
 {
     return this;
 }
+QChart* EchoPlugin::getChart()
+{
+    return nullptr;
+}

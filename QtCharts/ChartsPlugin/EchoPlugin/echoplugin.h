@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <chartinterface.h>
+#include <QtCharts>
+using namespace QtCharts;
 
 class QLabel;
 class EchoPlugin : public QWidget, IChartInterface
@@ -17,6 +19,7 @@ public:
     QString echo(const QString &message);
     QString getPluginId();
     QObject* getInstance();
+    QChart* getChart();
 private:
     QLabel *echoAnswer;
 };

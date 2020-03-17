@@ -7,7 +7,8 @@
 #include <QPluginLoader>
 #include <QPainter>
 
-Widget::Widget(QWidget *parent) : QWidget(parent), chart(nullptr),myWidget(nullptr),layout(new QVBoxLayout)
+Widget::Widget(QWidget *parent) : QWidget(parent), chartInterface(nullptr),myWidget(nullptr),
+    layout(new QVBoxLayout),theme(QChart::ChartThemeLight)
 {
 
 }
@@ -30,16 +31,16 @@ void Widget::loadPlugin(const QString& text)
      QObject *plugin = pluginLoader.instance();
      if (plugin)
      {
-         chart = qobject_cast<IChartInterface *>(plugin);
-         if(chart)
+         chartInterface = qobject_cast<IChartInterface *>(plugin);
+         if(chartInterface)
          {
             if(myWidget != nullptr)
             {
                 layout->removeWidget(myWidget);
                 delete  myWidget;
             }
-            chart->echo("hello");
-            QObject* obj = chart->getInstance();
+            chartInterface->echo("hello");
+            QObject* obj = chartInterface->getInstance();
             myWidget = qobject_cast<QWidget*>(obj);
             if(myWidget == nullptr)
             {
@@ -47,6 +48,7 @@ void Widget::loadPlugin(const QString& text)
                 return;
             }
             layout->addWidget(myWidget);
+            onChartThemeChanged(theme);
             setLayout(layout);
          }
 
@@ -57,4 +59,18 @@ void Widget::loadPlugin(const QString& text)
      }
 
 
+}
+
+void Widget::onChartThemeChanged(int index)
+{
+    qDebug()<<__func__<<" "<< index;
+    if(chartInterface != nullptr)
+    {
+        QChart* chart = chartInterface->getChart();
+        if(chart != nullptr)
+        {
+            theme = (enum QChart::ChartTheme)index;
+            chart->setTheme(theme);
+        }
+    }
 }

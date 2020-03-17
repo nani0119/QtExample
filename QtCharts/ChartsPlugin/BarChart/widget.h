@@ -13,11 +13,13 @@ class BarChart : public QWidget,IChartInterface
 public:
     BarChart(QWidget *parent = nullptr);
     ~BarChart();
-
-    // IChartInterface interface
-public:
     virtual QString echo(const QString &message) override;
     virtual QString getPluginId() override;
     virtual QObject *getInstance() override;
+    virtual QChart *getChart() override;
+private slots:
+    void onBarSeriesClicked(int index,QBarSet* set);
+private:
+    QChart* chart;
 };
 #endif // WIDGET_H
