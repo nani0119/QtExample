@@ -1,8 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
-
-#include <QWidget>
 #include "chartinterface.h"
+#include <QWidget>
 
 class BarChart : public QWidget,IChartInterface
 {

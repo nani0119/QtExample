@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QtCharts>
-using namespace QtCharts;
+//using namespace QtCharts;
 
 class IChartInterface
 {

@@ -1,12 +1,11 @@
+#include "chartstooltip.h"
 #include "widget.h"
-#include <QtCharts>
-//#include <QChart>
 #include <QVBoxLayout>
 #include <QDebug>
-using namespace QtCharts;
+#include <QtCharts>
 
 BarChart::BarChart(QWidget *parent)
-    : QWidget(parent), chart(new QChart)
+    : QWidget(parent), chart(new QtCharts::QChart)
 {
 
         QBarSet *set0 = new QBarSet("Jane");

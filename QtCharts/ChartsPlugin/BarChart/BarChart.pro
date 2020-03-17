@@ -6,6 +6,7 @@ INCLUDEPATH    += ../../Charts
 TARGET          = $$qtLibraryTarget(BarChartPlugin)
 DESTDIR         = ../../plugins
 
+INCLUDEPATH    += ../ChartsToolTip
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -21,7 +22,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     widget.cpp \
+    ../ChartsToolTip/chartstooltip.cpp
 
 
 HEADERS += \
-    widget.h
+    widget.h \
+    ../ChartsToolTip/chartstooltip.h
