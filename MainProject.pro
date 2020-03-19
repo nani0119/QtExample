@@ -20,6 +20,7 @@ SUBDIRS +=  HelloWorld \
             FontComboBox \
             FontDialog \
             FormLayout \
+    GraphicsItem \
             HelloWorldTr \
             DialogMode \
             ImageReader \

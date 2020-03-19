@@ -1,8 +1,8 @@
 #include "chartstooltip.h"
 #include <QDebug>
 
-ChartToolTip::ChartToolTip(QChart *parent):QGraphicsItem(parent),m_chart(parent),
-    m_textRect(QRect(0,0,0,0)),m_rect(QRect(0,0,0,0)),m_anchor(QPointF(0,0))
+ChartToolTip::ChartToolTip(QChart *parent):QGraphicsItem(parent),
+    m_textRect(QRect(0,0,0,0)),m_rect(QRect(0,0,0,0)),m_anchor(QPointF(0,0)),m_chart(parent)
 {
 
 }
@@ -51,12 +51,14 @@ void ChartToolTip::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     Q_UNUSED(widget)
     QPainterPath path;
     path.addRoundedRect(m_rect, 5, 5);
+
     // series---->chart
     QPointF postion = m_chart->mapToPosition(m_anchor);
     qDebug()<<__func__<<"  chart->mapToPosition "<<postion;
     // chart(parent)---->child
     QPointF anchor = mapFromParent(postion);
     qDebug()<<__func__<<"  anchor "<<anchor;
+
     if (!m_rect.contains(anchor))
     {
         qDebug()<<__func__<<"donot contains anchor";

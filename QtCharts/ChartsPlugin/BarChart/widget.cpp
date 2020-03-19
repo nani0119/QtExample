@@ -8,47 +8,45 @@ BarChart::BarChart(QWidget *parent)
     : QWidget(parent), chart(new QChart),tooltip(nullptr)
 {
 
-        QBarSet *set0 = new QBarSet("Jane");
-        QBarSet *set1 = new QBarSet("John");
+    QBarSet *set0 = new QBarSet("Jane");
+    QBarSet *set1 = new QBarSet("John");
 
+    *set0 << 1 << 2 << 3 << 4 << 5 << 6;
+    *set1 << 5 << 2 << 6 << 4 << 3 << 7;
 
-        *set0 << 15 << 2 << 3 << 4 << 5 << 6;
-        *set1 << 5 << 2 << 6 << 4 << 3 << 7;
+    QBarSeries *series = new QBarSeries();
+    series->append(set0);
+    series->append(set1);
 
+    chart->addSeries(series);
+    chart->setTitle("Simple barchart example");
+    chart->setAnimationOptions(QChart::SeriesAnimations);
 
-        QBarSeries *series = new QBarSeries();
-        series->append(set0);
-        series->append(set1);
+    QStringList categories;
+    categories << "Jan" << "Feb" << "Mar" << "Apr" << "May" << "Jun";
 
-        chart->addSeries(series);
-        chart->setTitle("Simple barchart example");
-        chart->setAnimationOptions(QChart::SeriesAnimations);
+    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    axisX->append(categories);
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
 
-        QStringList categories;
-        categories << "Jan" << "Feb" << "Mar" << "Apr" << "May" << "Jun";
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setRange(0,15);
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
 
-        QBarCategoryAxis *axisX = new QBarCategoryAxis();
-        axisX->append(categories);
-        chart->addAxis(axisX, Qt::AlignBottom);
-        series->attachAxis(axisX);
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignRight);
 
-        QValueAxis *axisY = new QValueAxis();
-        axisY->setRange(0,15);
-        chart->addAxis(axisY, Qt::AlignLeft);
-        series->attachAxis(axisY);
+    chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
 
-        chart->legend()->setVisible(true);
-        chart->legend()->setAlignment(Qt::AlignRight);
+    QVBoxLayout* layout = new QVBoxLayout;
+    layout->addWidget(chartView);
+    setLayout(layout);
 
-        chartView = new QChartView(chart);
-        chartView->setRenderHint(QPainter::Antialiasing);
-
-        QVBoxLayout* layout = new QVBoxLayout;
-        layout->addWidget(chartView);
-        setLayout(layout);
-
-        connect(series,SIGNAL(hovered(bool, int , QBarSet *)),this, SLOT(onBarSeriesHovered(bool, int , QBarSet *)));
-        connect(series,SIGNAL(clicked(int , QBarSet *)),this, SLOT(onBarSeriesClicked(int , QBarSet *)));
+    connect(series,SIGNAL(hovered(bool, int , QBarSet *)),this, SLOT(onBarSeriesHovered(bool, int , QBarSet *)));
+    connect(series,SIGNAL(clicked(int , QBarSet *)),this, SLOT(onBarSeriesClicked(int , QBarSet *)));
 }
 
 BarChart::~BarChart()
@@ -79,6 +77,8 @@ QChart *BarChart::getChart()
 
 void BarChart::onBarSeriesHovered(bool status, int index, QBarSet *set)
 {
+    Q_UNUSED(index)
+    Q_UNUSED(set)
     if(status == false)
     {
         tooltip->hide();
@@ -86,13 +86,14 @@ void BarChart::onBarSeriesHovered(bool status, int index, QBarSet *set)
     }
 }
 
+
 void BarChart::onBarSeriesClicked(int index, QBarSet *set)
 {
     qDebug()<<__func__<<" index: "<< index << "  value: "<<set->at(index);
 
     if(tooltip == nullptr)
     {
-       tooltip = new ChartToolTip(chart);
+        tooltip = new ChartToolTip(chart);
     }
 
     QPoint globalCursorPoint = cursor().pos();
@@ -105,8 +106,8 @@ void BarChart::onBarSeriesClicked(int index, QBarSet *set)
     qDebug()<<__func__<<" chartPoint:" << chartPoint;
     QPointF seriesPoint = chart->mapToValue(chartPoint);
     qDebug()<<__func__<<" seriesPoint:" << seriesPoint;
-    //                  mapFromGlobal               mapToScene             mapFromScene               mapToValue
-    //globalCursorPoint--------------->charViewPoint----------->scenePoint--------------->chartPoint-------------->seriesPoint
+    //                   mapFromGlobal               mapToScene             mapFromScene               mapToValue
+    // globalCursorPoint--------------->charViewPoint----------->scenePoint--------------->chartPoint-------------->seriesPoint
     //                                                                                                                  |
     //                                                                                                                  | mapToPosition
     //                                                                      mapFromParent                               |
