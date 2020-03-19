@@ -58,6 +58,52 @@
             <verstretch>1</verstretch>
            </sizepolicy>
           </property>
+          <property name="maxVisibleItems">
+           <number>8</number>
+          </property>
+          <property name="maxCount">
+           <number>8</number>
+          </property>
+          <item>
+           <property name="text">
+            <string>ChartThemeLight</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeBlueCerulean</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeDark</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeBrownSand</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeBlueNcs</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeHighContrast</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeBlueIcy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ChartThemeQt</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -85,6 +131,7 @@
    <container>1</container>
    <slots>
     <slot>loadPlugin(QString)</slot>
+    <slot>onChartThemeChanged(int)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -103,6 +150,22 @@
     <hint type="destinationlabel">
      <x>36</x>
      <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>themeComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>widget</receiver>
+   <slot>onChartThemeChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>566</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>557</x>
+     <y>91</y>
     </hint>
    </hints>
   </connection>

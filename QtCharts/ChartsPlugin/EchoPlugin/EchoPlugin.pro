@@ -2,7 +2,7 @@ include(../../../build.pri)
 
 TEMPLATE        = lib
 CONFIG         += plugin
-QT             += widgets
+QT             += widgets charts
 INCLUDEPATH    += ../../Charts
 TARGET          = $$qtLibraryTarget(echoplugin)
 DESTDIR         = ../../plugins

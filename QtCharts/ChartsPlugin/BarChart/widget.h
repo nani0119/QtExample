@@ -1,8 +1,8 @@
 #ifndef WIDGET_H
 #define WIDGET_H
-
-#include <QWidget>
 #include "chartinterface.h"
+#include "chartstooltip.h"
+#include <QWidget>
 
 class BarChart : public QWidget,IChartInterface
 {
@@ -13,11 +13,17 @@ class BarChart : public QWidget,IChartInterface
 public:
     BarChart(QWidget *parent = nullptr);
     ~BarChart();
-
-    // IChartInterface interface
-public:
     virtual QString echo(const QString &message) override;
     virtual QString getPluginId() override;
     virtual QObject *getInstance() override;
+    virtual QChart *getChart() override;
+private slots:
+    void onBarSeriesHovered(bool status, int index, QBarSet *set);
+    void onBarSeriesClicked(int index, QBarSet *set);
+private:
+    QChart* chart;
+    ChartToolTip *tooltip;
+    QChartView *chartView;
+
 };
 #endif // WIDGET_H
