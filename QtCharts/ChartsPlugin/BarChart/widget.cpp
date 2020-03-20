@@ -41,6 +41,7 @@ BarChart::BarChart(QWidget *parent)
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
+
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(chartView);
     setLayout(layout);

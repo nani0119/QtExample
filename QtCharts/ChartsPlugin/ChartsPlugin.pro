@@ -2,4 +2,6 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
         BarChart \
-        EchoPlugin
+        EchoPlugin \
+        HBarChart \
+        LineChart
