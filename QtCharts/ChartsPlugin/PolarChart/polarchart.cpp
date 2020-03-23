@@ -37,6 +37,7 @@ PolarChart::PolarChart(QWidget *parent)
     series3->append(angularMin+(angularTickCount-1)*ad,first);
     series4->append(angularMin+(angularTickCount-1)*ad,radialMin);
 
+
     QAreaSeries *series5 = new QAreaSeries();
     series5->setName("star area");
     series5->setUpperSeries(series3);
@@ -75,6 +76,7 @@ PolarChart::PolarChart(QWidget *parent)
     QValueAxis *radialAxis = new QValueAxis();
     radialAxis->setLabelsVisible(true);
     radialAxis->setTickCount(11);
+
     radialAxis->setLabelFormat("%d");
     radialAxis->setRange(radialMin,radialMax);
 
@@ -87,8 +89,9 @@ PolarChart::PolarChart(QWidget *parent)
 //    series3->attachAxis(radialAxis);
 //    series4->attachAxis(angularAxis);
 //    series4->attachAxis(radialAxis);
-//      series5->attachAxis(angularAxis);
+//     series5->attachAxis(angularAxis);
       series5->attachAxis(angularCategoryAxis);
+
       series5->attachAxis(radialAxis);
 
     chart->legend()->setVisible(false);
