@@ -56,10 +56,28 @@ LineChart::LineChart(QWidget *parent):QWidget(parent), chart(new QChart)
 
 
     QValueAxis *yAxix = new QValueAxis;
-    yAxix->setRange(0,25);
+    yAxix->setRange(-10,25);
     yAxix->applyNiceNumbers();
-    yAxix->setVisible(false);
+    yAxix->setVisible(true);
     chart->addAxis(yAxix, Qt::AlignLeft);
+
+    QCategoryAxis *yCategoryAxix = new QCategoryAxis;
+    yCategoryAxix->setRange(-20,25);
+    yCategoryAxix->setStartValue(-10);
+    yCategoryAxix->append("1st", -10);
+    yCategoryAxix->append("2nd", -5);
+    yCategoryAxix->append("3th", 0);
+    yCategoryAxix->append("5th", 5);
+    yCategoryAxix->append("6th", 10);
+    yCategoryAxix->append("7th", 15);
+    yCategoryAxix->append("8th", 20);
+    yCategoryAxix->append("9th", 25);
+    chart->addAxis(yCategoryAxix, Qt::AlignRight);
+
+    barSeries->attachAxis(yCategoryAxix);
+    // lineSeries
+    lineSeries->attachAxis(yCategoryAxix);
+    splineSeries->attachAxis(yCategoryAxix);
 
     barSeries->attachAxis(yAxix);
     // lineSeries

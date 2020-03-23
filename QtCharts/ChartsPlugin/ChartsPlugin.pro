@@ -1,7 +1,14 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+        AreaChart \
         BarChart \
+        DonutChart \
         EchoPlugin \
         HBarChart \
-        LineChart
+        LineChart \
+        PercentBarChart \
+        PieChart \
+        PolarChart \
+        ScatterChart \
+        StackedBarChart
