@@ -49,7 +49,7 @@ void MainWindow::getAllPlugin(Ui::MainWindow *ui)
         if(plugin)
         {
             QString pluginName = plugin->getPluginId();
-            //qDebug()<<"plugin:"<<pluginName<<"   path:"<<pluginsDir.absoluteFilePath(fileName);
+            qDebug()<<"plugin:"<<pluginName<<"   path:"<<pluginsDir.absoluteFilePath(fileName);
             comboxBox->addItem(pluginName,pluginsDir.absoluteFilePath(fileName));
         }
 

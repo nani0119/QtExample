@@ -3,6 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
         AreaChart \
         BarChart \
+        BoxAndWhiskersChart \
         DonutChart \
         EchoPlugin \
         HBarChart \

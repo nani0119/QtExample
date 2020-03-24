@@ -3,7 +3,7 @@ TEMPLATE        = lib
 CONFIG         += plugin
 QT             += widgets charts
 INCLUDEPATH    += ../../Charts
-TARGET          = $$qtLibraryTarget(BarChartPlugin)
+TARGET          = $$qtLibraryTarget(LineChartPlugin)
 DESTDIR         = ../../plugins
 
 INCLUDEPATH    += ../ChartsToolTip
