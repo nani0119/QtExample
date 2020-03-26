@@ -50,25 +50,25 @@ Q_SIGNALS:
 
 private:
     QList<QtDataVisualization::QBar3DSeries *> getBar3DSeriesList(QMap<QString,QList<QList<qreal> > > list);
-     Q3DBars *m_graph;
-     IBarDataInterface* dataSource;
-     QValue3DAxis *m_ZAxis;
-     QCategory3DAxis *m_RowAxis;
-     QCategory3DAxis *m_ColAxis;
-     QList<QBar3DSeries *> seriesList;
-     int m_fontSize;
-     float m_defaultAngleX;
-     float m_defaultAngleY;
-     float m_defaultZoom;
-     QVector3D m_defaultTarget;
-     QPropertyAnimation m_animationCameraX;
-     QPropertyAnimation m_animationCameraY;
-     QPropertyAnimation m_animationCameraZoom;
-     QPropertyAnimation m_animationCameraTarget;
-     float m_xRotation;
-     float m_yRotation;
-     bool m_smooth;
-     QAbstract3DSeries::Mesh m_barMesh;
+    Q3DBars *m_graph;
+    IBarDataInterface* dataSource;
+    QValue3DAxis *m_ZAxis;
+    QCategory3DAxis *m_RowAxis;
+    QCategory3DAxis *m_ColAxis;
+    QList<QBar3DSeries *> seriesList;
+    int m_fontSize;
+    float m_defaultAngleX;
+    float m_defaultAngleY;
+    float m_defaultZoom;
+    QVector3D m_defaultTarget;
+    QPropertyAnimation m_animationCameraX;
+    QPropertyAnimation m_animationCameraY;
+    QPropertyAnimation m_animationCameraZoom;
+    QPropertyAnimation m_animationCameraTarget;
+    float m_xRotation;
+    float m_yRotation;
+    bool m_smooth;
+    QAbstract3DSeries::Mesh m_barMesh;
 
 };
 

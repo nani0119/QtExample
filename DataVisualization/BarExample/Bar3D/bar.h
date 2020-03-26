@@ -19,6 +19,7 @@ private:
     QComboBox* dataSource;
     GraphModifier *modifier;
     QComboBox *rangeList;
+
     QComboBox *seriesComboBox;
     QLabel *seriesLabel;
     IBarDataInterface* barDataSource;

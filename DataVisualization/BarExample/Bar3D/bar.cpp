@@ -105,7 +105,6 @@ Bar::Bar(QWidget *parent) : QWidget(parent),barDataSource(nullptr)
 //    seriesCheckBox->setChecked(false);
 //    vLayout->addWidget(seriesCheckBox);
 
-
     QCheckBox *reverseValueAxisCheckBox = new QCheckBox();
     reverseValueAxisCheckBox->setText(QStringLiteral("Reverse value axis"));
     reverseValueAxisCheckBox->setChecked(false);
@@ -234,12 +233,11 @@ Bar::Bar(QWidget *parent) : QWidget(parent),barDataSource(nullptr)
     vLayout->addWidget(seriesComboBox);
     connect(seriesComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onSeriesChanged(int)));
 
+
     vLayout->addWidget(new QLabel(QStringLiteral("data source")));
     dataSource = new QComboBox();
     loadDataSource();
     vLayout->addWidget(dataSource);
-
-
 
     modifier = new GraphModifier(widgetGraph);
     onDataSourceChanged(0);

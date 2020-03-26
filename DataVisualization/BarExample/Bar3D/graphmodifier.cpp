@@ -183,7 +183,6 @@ QList<QBar3DSeries *> GraphModifier::getseriesList()
 {
     return seriesList;
 }
-
 void GraphModifier::changeRange(int range)
 {
     int rowSize = seriesList[0]->dataProxy()->rowCount();
@@ -362,5 +361,4 @@ QList<QBar3DSeries *> GraphModifier::getBar3DSeriesList(QMap<QString,QList<QList
     }
     return seriesList;
 }
-
 
