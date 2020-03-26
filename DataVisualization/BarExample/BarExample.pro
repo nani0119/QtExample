@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    BarExample \
-    Simple3DBar
+    Bar3D \
+    BarDataPlugin
