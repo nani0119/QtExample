@@ -9,6 +9,7 @@ SUBDIRS +=  HelloWorld \
             CommandLinkButton \
             CryptographicHash \
             CustomLayout \
+    DataVisualization \
             DesktopServices \
             Dial \
             DateTimeEdit \
@@ -37,6 +38,7 @@ SUBDIRS +=  HelloWorld \
             PrinterDialog \
             ProgressBar \
             Property \
+    PropertyAnimation \
             PushButton \
     QSS \
     QtCharts \
