@@ -1,8 +1,18 @@
 #include "temperaturedata.h"
+#include <QRandomGenerator>
+#include <QtDataVisualization/QBarDataItem>
+#include <QTimer>
 
-TemperatureData::TemperatureData(QObject *parent) : QObject(parent)
+TemperatureData::TemperatureData(QObject *parent) : QObject(parent),pTimer(new QTimer(this))
 {
+    pTimer->setInterval(1000);
+    connect(pTimer, SIGNAL(timeout()),this, SLOT(onTimeout()));
+    //pTimer->start();
+}
 
+TemperatureData::~TemperatureData()
+{
+    //pTimer->stop();
 }
 
 QString TemperatureData::echo(const QString &message)
@@ -209,6 +219,26 @@ QtDataVisualization::QCategory3DAxis *TemperatureData::getColAxis()
     allData["Oulu"] = series1;
     allData["Helsinki"]=series2;
     return allData;
-}
+ }
+
+ void TemperatureData::set3DBars(QtDataVisualization::Q3DBars *bar)
+ {
+     qDebug()<<__func__;
+     bars3D = bar;
+ }
+
+ void TemperatureData::onTimeout()
+ {
+     qDebug()<<__func__;
+//     int row = QRandomGenerator::global()->bounded(0,8);
+//     int col = QRandomGenerator::global()->bounded(0,12);
+//     int t = QRandomGenerator::global()->bounded(-20,20);
+//     const QtDataVisualization::QBarDataItem item(t);
+//     if(bars3D)
+//     {
+//        bars3D->seriesList()[0]->dataProxy()->setItem(row, col, item);
+//     }
+
+ }
 
 

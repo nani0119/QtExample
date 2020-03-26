@@ -20,7 +20,9 @@ public:
     QtDataVisualization::QCategory3DAxis *getColAxis();
 //    QList<QtDataVisualization::QBar3DSeries *> getBar3DSeriesList();
     QMap<QString,QList<QList<qreal>>> getBar3DSeriesData();
-
+    void set3DBars(QtDataVisualization::Q3DBars* bar);
+private:
+    QtDataVisualization::Q3DBars* bars3D;
 };
 
 #endif // TEMPERATUREDATA_H

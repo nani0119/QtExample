@@ -127,6 +127,12 @@ QtDataVisualization::QCategory3DAxis *TemperatureData2::getColAxis()
     QMap<QString, QList<QList<qreal> > > allData;
     allData["Oulu2"] = series1;
     return allData;
-}
+ }
+
+ void TemperatureData2::set3DBars(QtDataVisualization::Q3DBars *bar)
+ {
+     qDebug()<<__func__;
+     bars3D = bar;
+ }
 
 

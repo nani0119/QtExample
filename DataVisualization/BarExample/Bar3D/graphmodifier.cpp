@@ -93,7 +93,7 @@ void GraphModifier::setDataSource(IBarDataInterface *dataSoureInterface)
     {
         m_graph->addSeries(seriesList[i]);
     }
-
+    dataSource->set3DBars(m_graph);
 }
 
 void GraphModifier::changePresetCamera()
