@@ -19,11 +19,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    scatter3d.cpp
+    surface3d.cpp
 
 HEADERS += \
-    scatter3d.h
+    surface3d.h
 
 FORMS += \
-    scatter3d.ui
+    surface3d.ui
 
