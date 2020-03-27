@@ -135,4 +135,9 @@ QtDataVisualization::QCategory3DAxis *TemperatureData2::getColAxis()
      bars3D = bar;
  }
 
+ void TemperatureData2::leave()
+ {
+     qDebug()<<__func__;
+ }
+
 

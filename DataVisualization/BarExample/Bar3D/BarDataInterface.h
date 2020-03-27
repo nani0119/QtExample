@@ -19,6 +19,7 @@ public:
 //    virtual  QList<QtDataVisualization::QBar3DSeries*> getBar3DSeriesList() = 0;
     virtual  QMap<QString,QList<QList<qreal>>> getBar3DSeriesData() = 0;
     virtual  void set3DBars(QtDataVisualization::Q3DBars* bar) = 0;
+    virtual  void leave() = 0;
 };
 
 #define IBarDataInterface_iid "Examples.Plugin.IBarDataInterface"

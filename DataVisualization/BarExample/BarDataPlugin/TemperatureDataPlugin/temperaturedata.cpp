@@ -5,9 +5,9 @@
 
 TemperatureData::TemperatureData(QObject *parent) : QObject(parent),pTimer(new QTimer(this))
 {
-    pTimer->setInterval(1000);
+    pTimer->setInterval(100);
     connect(pTimer, SIGNAL(timeout()),this, SLOT(onTimeout()));
-    //pTimer->start();
+
 }
 
 TemperatureData::~TemperatureData()
@@ -225,19 +225,27 @@ QtDataVisualization::QCategory3DAxis *TemperatureData::getColAxis()
  {
      qDebug()<<__func__;
      bars3D = bar;
+     pTimer->start();
+ }
+
+ void TemperatureData::leave()
+ {
+    qDebug()<<__func__;
+    pTimer->stop();
  }
 
  void TemperatureData::onTimeout()
  {
      qDebug()<<__func__;
-//     int row = QRandomGenerator::global()->bounded(0,8);
-//     int col = QRandomGenerator::global()->bounded(0,12);
-//     int t = QRandomGenerator::global()->bounded(-20,20);
-//     const QtDataVisualization::QBarDataItem item(t);
-//     if(bars3D)
-//     {
-//        bars3D->seriesList()[0]->dataProxy()->setItem(row, col, item);
-//     }
+     int row = QRandomGenerator::global()->bounded(0,8);
+     int col = QRandomGenerator::global()->bounded(0,12);
+     int t = QRandomGenerator::global()->bounded(-20,20);
+     int s = QRandomGenerator::global()->bounded(0, bars3D->seriesList().count());
+     const QtDataVisualization::QBarDataItem item(t);
+     if(bars3D)
+     {
+        bars3D->seriesList()[s]->dataProxy()->setItem(row, col, item);
+     }
 
  }
 

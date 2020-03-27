@@ -330,6 +330,11 @@ void Bar::onDataSourceChanged(int index)
     QObject *plugin = pluginLoader.instance();
     if (plugin)
     {
+        if(barDataSource)
+        {
+            // old
+            barDataSource->leave();
+        }
         barDataSource = qobject_cast<IBarDataInterface *>(plugin);
         if(barDataSource)
         {

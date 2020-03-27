@@ -21,6 +21,7 @@ public:
 //    QList<QtDataVisualization::QBar3DSeries *> getBar3DSeriesList();
     QMap<QString,QList<QList<qreal>>> getBar3DSeriesData();
     void set3DBars(QtDataVisualization::Q3DBars* bar);
+    void leave();
 private:
     QtDataVisualization::Q3DBars* bars3D;
 };
