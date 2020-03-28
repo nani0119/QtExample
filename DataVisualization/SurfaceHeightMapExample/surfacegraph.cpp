@@ -1,6 +1,8 @@
 #include "surfacegraph.h"
 #include <QtCore/qmath.h>
 
+#define  USE_NUMBER 1
+
 SurfaceGraph::SurfaceGraph(Q3DSurface *surface): m_graph(surface)
 {
     changeTheme(Q3DTheme::ThemeQt);
@@ -9,6 +11,9 @@ SurfaceGraph::SurfaceGraph(Q3DSurface *surface): m_graph(surface)
 
     m_heightMapProxy = new QHeightMapSurfaceDataProxy();
     m_surfaceSeries = new QSurface3DSeries(m_heightMapProxy);
+#ifdef USE_NUMBER
+    m_surfaceSeries->setItemLabelFormat("W:@xLabel, H:@zLabel, D:@yLabel");
+#endif
     setSurfaceSeries();
 
     m_graph->addSeries(m_surfaceSeries);
@@ -44,7 +49,7 @@ void SurfaceGraph::setAxisMaxSliderZ(QSlider *slider)
 
 void SurfaceGraph::setSurfaceSeries()
 {
-    setDrawMode(2);
+    setDrawMode(1);
     m_surfaceSeries->setFlatShadingEnabled(false);
 }
 
@@ -191,15 +196,71 @@ void SurfaceGraph::setHeightMapSurfaceAxis()
 void SurfaceGraph::updateHeightMapData(QString file)
 {
     qDebug()<<__func__<<"  "<< file;
+#ifdef USE_NUMBER
     QImage heightMapImage(file);
     m_heightMapProxy->setHeightMap(heightMapImage);
+
+    m_heightMapWidth = heightMapImage.width();
+    m_heightMapHeight = heightMapImage.height();
+    m_heightMapProxy->setValueRanges(0.0f, m_heightMapWidth, 0.0f, m_heightMapHeight);
+    resetAxisRange();
+
+    //qDebug()<<"formate:"<<m_surfaceSeries->itemLabelFormat();
+    //m_surfaceSeries->setTexture(heightMapImage);
+#else
+    QImage heightMapImage(file);
+    m_heightMapProxy->setHeightMap(heightMapImage);
+
+    m_heightMapProxy->setValueRanges(34.0f, 40.0f, 18.0f, 24.0f);
+    m_heightMapWidth = heightMapImage.width();
+    m_heightMapHeight = heightMapImage.height();
+#endif
 }
 
 //===============================================
+#ifdef USE_NUMBER
+const int heightMapGridStepX = 1;
+const int heightMapGridStepZ = 1;
+#else
 const int heightMapGridStepZ = 6;
 const int heightMapGridStepX = 6;
+#endif
 void SurfaceGraph::resetAxisRange()
 {
+#ifdef USE_NUMBER
+
+    m_graph->axisX()->setRange(0.0f, m_heightMapWidth);
+    m_graph->axisY()->setAutoAdjustRange(true);
+    m_graph->axisZ()->setRange(0.0f, m_heightMapHeight);
+    m_graph->axisX()->setLabelFormat("%.1f ");
+    m_graph->axisY()->setLabelFormat("%.1f ");
+    m_graph->axisZ()->setLabelFormat("%.1f ");
+
+    m_graph->axisX()->setTitle(QStringLiteral("Width"));
+    m_graph->axisY()->setTitle(QStringLiteral("Depth"));
+    m_graph->axisZ()->setTitle(QStringLiteral("Height"));
+
+    // Reset range sliders for height map
+    int mapGridCountX = m_heightMapWidth / heightMapGridStepX;
+    int mapGridCountZ = m_heightMapHeight / heightMapGridStepZ;
+    m_rangeMinX = 0.0f;
+    m_rangeMinZ = 0.0f;
+    m_stepX = 1;
+    m_stepZ = 1;
+    m_axisMinSliderX->setMaximum(mapGridCountX);
+    m_axisMinSliderX->setValue(0);
+
+    m_axisMaxSliderX->setMaximum(mapGridCountX);
+    m_axisMaxSliderX->setValue(mapGridCountX);
+
+    m_axisMinSliderZ->setMaximum(mapGridCountZ);
+    m_axisMinSliderZ->setValue(0);
+
+    m_axisMaxSliderZ->setMaximum(mapGridCountZ);
+    m_axisMaxSliderZ->setValue(mapGridCountZ);
+
+ #else
+
     m_graph->axisX()->setLabelFormat("%.1f N");
     m_graph->axisZ()->setLabelFormat("%.1f E");
     m_graph->axisX()->setRange(34.0f, 40.0f);
@@ -225,14 +286,27 @@ void SurfaceGraph::resetAxisRange()
     m_axisMinSliderZ->setValue(0);
     m_axisMaxSliderZ->setMaximum(mapGridCountZ - 1);
     m_axisMaxSliderZ->setValue(mapGridCountZ - 1);
+
+#endif
 }
 
 void SurfaceGraph::fillHeightMapProxy()
 {
+#ifdef USE_NUMBER
+
+    QImage heightMapImage(":/img/mountain");
+    m_heightMapWidth = heightMapImage.width();
+    m_heightMapHeight = heightMapImage.height();
+
+    m_heightMapProxy->setHeightMap(heightMapImage);
+    m_heightMapProxy->setValueRanges(0.0f, m_heightMapWidth, 0.0f, m_heightMapHeight);
+
+#else
     QImage heightMapImage(":/img/mountain");
     m_heightMapProxy->setHeightMap(heightMapImage);
     m_heightMapProxy->setValueRanges(34.0f, 40.0f, 18.0f, 24.0f);
     m_heightMapWidth = heightMapImage.width();
     m_heightMapHeight = heightMapImage.height();
+#endif
 }
 

@@ -6,6 +6,7 @@
 #include <QtDataVisualization>
 using namespace QtDataVisualization;
 
+
 class SurfaceGraph : public QObject
 {
     Q_OBJECT
@@ -63,8 +64,6 @@ private:
    QSurface3DSeries* m_surfaceSeries;
    int m_heightMapWidth;
    int m_heightMapHeight;
-
-
 };
 
 #endif // SURFACEGRAPH_H
