@@ -5,28 +5,21 @@ SurfaceGraph::SurfaceGraph(Q3DSurface *surface): m_graph(surface)
 {
     changeTheme(Q3DTheme::ThemeQt);
     setShadowQuality(QAbstract3DGraph::ShadowQualityNone);
-    setDataSurfaceAxis();
+    setHeightMapSurfaceAxis();
 
-    m_dataProxy = new QSurfaceDataProxy();
-    m_surfaceSeries = new QSurface3DSeries(m_dataProxy);
+    m_heightMapProxy = new QHeightMapSurfaceDataProxy();
+    m_surfaceSeries = new QSurface3DSeries(m_heightMapProxy);
     setSurfaceSeries();
 
     m_graph->addSeries(m_surfaceSeries);
 
-    fillSqrtSinProxy();
+    fillHeightMapProxy();
 
 }
 
 SurfaceGraph::~SurfaceGraph()
 {
     delete m_graph;
-}
-
-void SurfaceGraph::setDataSurfaceAxis()
-{
-    m_graph->setAxisX(new QValue3DAxis);
-    m_graph->setAxisY(new QValue3DAxis);
-    m_graph->setAxisZ(new QValue3DAxis);
 }
 
 void SurfaceGraph::setAxisMinSliderX(QSlider *slider)
@@ -51,8 +44,8 @@ void SurfaceGraph::setAxisMaxSliderZ(QSlider *slider)
 
 void SurfaceGraph::setSurfaceSeries()
 {
-    setDrawMode(3);
-    m_surfaceSeries->setFlatShadingEnabled(true);
+    setDrawMode(2);
+    m_surfaceSeries->setFlatShadingEnabled(false);
 }
 
 void SurfaceGraph::changeTheme(int theme)
@@ -186,59 +179,60 @@ void SurfaceGraph::setGreenToRedGradient()
     m_surfaceSeries->setBaseGradient(gr);
     m_surfaceSeries->setColorStyle(Q3DTheme::ColorStyleRangeGradient);
 }
-//==========================================================================
-const float sampleMin = -8.0f;
-const float sampleMax = 8.0f;
-const int sampleCountX = 50;
-const int sampleCountZ = 50;
+
+
+void SurfaceGraph::setHeightMapSurfaceAxis()
+{
+    m_graph->setAxisX(new QValue3DAxis);
+    m_graph->setAxisY(new QValue3DAxis);
+    m_graph->setAxisZ(new QValue3DAxis);
+}
+
+void SurfaceGraph::updateHeightMapData(QString file)
+{
+    qDebug()<<__func__<<"  "<< file;
+    QImage heightMapImage(file);
+    m_heightMapProxy->setHeightMap(heightMapImage);
+}
+
+//===============================================
+const int heightMapGridStepZ = 6;
+const int heightMapGridStepX = 6;
 void SurfaceGraph::resetAxisRange()
 {
-    m_graph->axisX()->setLabelFormat("%.2f");
-    m_graph->axisZ()->setLabelFormat("%.2f");
-    m_graph->axisX()->setRange(sampleMin, sampleMax);
-    m_graph->axisY()->setRange(0.0f, 2.0f);
-    m_graph->axisZ()->setRange(sampleMin, sampleMax);
-    m_graph->axisX()->setLabelAutoRotation(30);
-    m_graph->axisY()->setLabelAutoRotation(90);
-    m_graph->axisZ()->setLabelAutoRotation(30);
+    m_graph->axisX()->setLabelFormat("%.1f N");
+    m_graph->axisZ()->setLabelFormat("%.1f E");
+    m_graph->axisX()->setRange(34.0f, 40.0f);
+    m_graph->axisY()->setAutoAdjustRange(true);
+    m_graph->axisZ()->setRange(18.0f, 24.0f);
 
-    // Reset range sliders for Sqrt&Sin
-    m_rangeMinX = sampleMin;
-    m_rangeMinZ = sampleMin;
-    m_stepX = (sampleMax - sampleMin) / float(sampleCountX - 1);
-    m_stepZ = (sampleMax - sampleMin) / float(sampleCountZ - 1);
-    m_axisMinSliderX->setMaximum(sampleCountX - 2);
+    m_graph->axisX()->setTitle(QStringLiteral("Latitude"));
+    m_graph->axisY()->setTitle(QStringLiteral("Height"));
+    m_graph->axisZ()->setTitle(QStringLiteral("Longitude"));
+
+    // Reset range sliders for height map
+    int mapGridCountX = m_heightMapWidth / heightMapGridStepX;
+    int mapGridCountZ = m_heightMapHeight / heightMapGridStepZ;
+    m_rangeMinX = 34.0f;
+    m_rangeMinZ = 18.0f;
+    m_stepX = 6.0f / float(mapGridCountX - 1);
+    m_stepZ = 6.0f / float(mapGridCountZ - 1);
+    m_axisMinSliderX->setMaximum(mapGridCountX - 2);
     m_axisMinSliderX->setValue(0);
-    m_axisMaxSliderX->setMaximum(sampleCountX - 1);
-    m_axisMaxSliderX->setValue(sampleCountX - 1);
-    m_axisMinSliderZ->setMaximum(sampleCountZ - 2);
+    m_axisMaxSliderX->setMaximum(mapGridCountX - 1);
+    m_axisMaxSliderX->setValue(mapGridCountX - 1);
+    m_axisMinSliderZ->setMaximum(mapGridCountZ - 2);
     m_axisMinSliderZ->setValue(0);
-    m_axisMaxSliderZ->setMaximum(sampleCountZ - 1);
-    m_axisMaxSliderZ->setValue(sampleCountZ - 1);
+    m_axisMaxSliderZ->setMaximum(mapGridCountZ - 1);
+    m_axisMaxSliderZ->setValue(mapGridCountZ - 1);
 }
 
-
-void SurfaceGraph::fillSqrtSinProxy()
+void SurfaceGraph::fillHeightMapProxy()
 {
-    float stepX = (sampleMax - sampleMin) / float(sampleCountX - 1);
-    float stepZ = (sampleMax - sampleMin) / float(sampleCountZ - 1);
-
-    QSurfaceDataArray *dataArray = new QSurfaceDataArray;
-    dataArray->reserve(sampleCountZ);
-    for (int i = 0 ; i < sampleCountZ ; i++) {
-        QSurfaceDataRow *newRow = new QSurfaceDataRow(sampleCountX);
-        // Keep values within range bounds, since just adding step can cause minor drift due
-        // to the rounding errors.
-        float z = qMin(sampleMax, (i * stepZ + sampleMin));
-        int index = 0;
-        for (int j = 0; j < sampleCountX; j++) {
-            float x = qMin(sampleMax, (j * stepX + sampleMin));
-            float R = qSqrt(z * z + x * x) + 0.01f;
-            float y = (qSin(R) / R + 0.24f) * 1.61f;
-            (*newRow)[index++].setPosition(QVector3D(x, y, z));
-        }
-        *dataArray << newRow;
-    }
-
-    m_dataProxy->resetArray(dataArray);
+    QImage heightMapImage(":/img/mountain");
+    m_heightMapProxy->setHeightMap(heightMapImage);
+    m_heightMapProxy->setValueRanges(34.0f, 40.0f, 18.0f, 24.0f);
+    m_heightMapWidth = heightMapImage.width();
+    m_heightMapHeight = heightMapImage.height();
 }
+
