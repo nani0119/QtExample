@@ -4,4 +4,5 @@ SUBDIRS += \
     BarExample \
     Simple3DBar \
     Simple3DScatter \
-    Simple3DSurface
+    Simple3DSurface \
+    SurfaceExample
