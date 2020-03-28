@@ -42,6 +42,8 @@ public slots:
 
     void updateHeightMapData(QString file);
 
+    void toggleSurfaceTexture(bool enable);
+
 private:
    void setHeightMapSurfaceAxis();
    void setSurfaceSeries();
@@ -64,6 +66,7 @@ private:
    QSurface3DSeries* m_surfaceSeries;
    int m_heightMapWidth;
    int m_heightMapHeight;
+   QString imgFile;
 };
 
 #endif // SURFACEGRAPH_H

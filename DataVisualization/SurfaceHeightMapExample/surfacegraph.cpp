@@ -3,7 +3,7 @@
 
 #define  USE_NUMBER 1
 
-SurfaceGraph::SurfaceGraph(Q3DSurface *surface): m_graph(surface)
+SurfaceGraph::SurfaceGraph(Q3DSurface *surface): m_graph(surface),imgFile(":/img/mountain")
 {
     changeTheme(Q3DTheme::ThemeQt);
     setShadowQuality(QAbstract3DGraph::ShadowQualityNone);
@@ -185,6 +185,13 @@ void SurfaceGraph::setGreenToRedGradient()
     m_surfaceSeries->setColorStyle(Q3DTheme::ColorStyleRangeGradient);
 }
 
+void SurfaceGraph::toggleSurfaceTexture(bool enable)
+{
+    if (enable)
+        m_surfaceSeries->setTextureFile(imgFile);
+    else
+        m_surfaceSeries->setTextureFile("");
+}
 
 void SurfaceGraph::setHeightMapSurfaceAxis()
 {
@@ -197,6 +204,7 @@ void SurfaceGraph::updateHeightMapData(QString file)
 {
     qDebug()<<__func__<<"  "<< file;
 #ifdef USE_NUMBER
+    imgFile = file;
     QImage heightMapImage(file);
     m_heightMapProxy->setHeightMap(heightMapImage);
 
@@ -208,6 +216,7 @@ void SurfaceGraph::updateHeightMapData(QString file)
     //qDebug()<<"formate:"<<m_surfaceSeries->itemLabelFormat();
     //m_surfaceSeries->setTexture(heightMapImage);
 #else
+    imgFile = file;
     QImage heightMapImage(file);
     m_heightMapProxy->setHeightMap(heightMapImage);
 
@@ -294,6 +303,7 @@ void SurfaceGraph::fillHeightMapProxy()
 {
 #ifdef USE_NUMBER
 
+    imgFile = ":/img/mountain";
     QImage heightMapImage(":/img/mountain");
     m_heightMapWidth = heightMapImage.width();
     m_heightMapHeight = heightMapImage.height();

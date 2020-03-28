@@ -12,6 +12,7 @@
 #include <QPushButton>
 #include <QtDataVisualization>
 #include <QFileDialog>
+#include <QCheckBox>
 
 using namespace QtDataVisualization;
 
@@ -120,8 +121,12 @@ SurFace3D::SurFace3D(QWidget *parent)
     QPushButton *selectHeighMap = new QPushButton();
     selectHeighMap->setText("select heightmap data...");
     selectHeighMap->setStyleSheet("QPushButton{text-align: left;}");
-
     vLayout->addWidget(selectHeighMap);
+
+    enableTexture = new QCheckBox();
+    enableTexture->setText(QStringLiteral("Surface texture"));
+    enableTexture->setChecked(false);
+     vLayout->addWidget(enableTexture);
 
     // color
     QGroupBox *colorGroupBox = new QGroupBox(QStringLiteral("Custom gradient"));
@@ -200,7 +205,8 @@ SurFace3D::SurFace3D(QWidget *parent)
     QObject::connect(this, SIGNAL(updateHeightMap(QString)),
                      modifier, SLOT(updateHeightMapData(QString)));
 
-
+    QObject::connect(enableTexture, &QCheckBox::stateChanged,
+                     modifier, &SurfaceGraph::toggleSurfaceTexture);
 
     QObject::connect(gradientBtoYPB, &QPushButton::pressed,
                      modifier, &SurfaceGraph::setBlackToYellowGradient);
@@ -226,6 +232,7 @@ void SurFace3D::onSelectHightMapClick()
     fileDialog.setViewMode(QFileDialog::Detail);
     if(fileDialog.exec())
     {
+        enableTexture->setChecked(false);
         emit updateHeightMap(fileDialog.selectedFiles()[0]);
     }
 }
