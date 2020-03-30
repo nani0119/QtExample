@@ -9,6 +9,7 @@ SUBDIRS +=  HelloWorld \
             CommandLinkButton \
             CryptographicHash \
             CustomLayout \
+    DBus \
     DataVisualization \
             DesktopServices \
             Dial \
