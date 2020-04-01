@@ -3,6 +3,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS +=  HelloWorld \
+    CameraDemo \
             CheckBox \
             ColorDialog \
             ComboBox \
